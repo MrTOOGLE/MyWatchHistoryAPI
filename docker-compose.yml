@@ -1,0 +1,33 @@
+services:
+  mysql:
+    image: mysql:9.1.0
+    container_name: mysql_container
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "bestuser", "--password=bestuser" ]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: my_db
+      MYSQL_USER: bestuser
+      MYSQL_PASSWORD: bestuser
+    volumes:
+      - E:/_DB/Stepik_hebirnate:/var/lib/mysql # Хранилище данных
+
+  tomcat:
+    image: tomcat:latest
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    volumes:
+      # Монтируем WAR файл вместо webapp директории
+      - ./target/D_SpringRest-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps/ROOT.war
+    environment:
+      CATALINA_OPTS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+    depends_on:
+      mysql:
+        condition: service_healthy

@@ -1,0 +1,10 @@
+POST localhost:8080/api/tv
+Content-Type: application/json
+
+{
+  "contentType": "MOVIE",
+  "title": "Абоба",
+  "releaseYear": 2018,
+  "myRating": 9.1,
+  "criticsRating": 8.7
+}
