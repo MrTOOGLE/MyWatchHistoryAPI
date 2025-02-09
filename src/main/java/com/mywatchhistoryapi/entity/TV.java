@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.util.Arrays;
 
+/**
+ * Сущность для фильмов/сериалов
+ */
 @Entity
 @Table(name = "media_content")
 public class TV {

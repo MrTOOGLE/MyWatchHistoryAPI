@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Сервисный слой для выполнения операций с базой данных
+ */
 @Service
 public class TvService {
     private final TvRepository tvRepository;
@@ -29,14 +32,17 @@ public class TvService {
         return tvRepository.findByContentType(ContentType.TV_SERIES);
     }
 
+    // Получить сериал/фильм по id
     public TV getTvById(int id) {
         return tvRepository.findById(id).orElse(null);
     }
 
+    // Сохранить/обновить сериал/фильм
     public void saveTv(TV tv) {
         tvRepository.save(tv);
     }
 
+    // Удалить сериал/фильм по id
     public void deleteTvById(int id) {
         tvRepository.deleteById(id);
     }

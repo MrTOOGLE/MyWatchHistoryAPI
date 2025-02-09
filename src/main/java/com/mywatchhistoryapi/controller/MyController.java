@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * API для CRUD методов для работы со списком просмотренных фильмов/сериалов
+ */
 @RestController
 @RequestMapping("/api/tv")
 public class MyController {
