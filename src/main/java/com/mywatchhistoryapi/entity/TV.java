@@ -1,5 +1,6 @@
 package com.mywatchhistoryapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Arrays;
@@ -33,7 +34,11 @@ public class TV {
 
     @Lob
     @Column(name = "image_data")
+    @JsonIgnore
     private byte[] imageData;
+
+    @Column(name="image_type")
+    private String imageType;
 
     public TV() {
     }
@@ -92,6 +97,14 @@ public class TV {
 
     public void setImageData(byte[] imageData) {
         this.imageData = imageData;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
     }
 
     @Override

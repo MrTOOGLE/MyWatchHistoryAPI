@@ -1,6 +1,7 @@
 .idea
 .mvn
 target
+imgs
 mvnw
 mvnw.cmd
 .gitattributes

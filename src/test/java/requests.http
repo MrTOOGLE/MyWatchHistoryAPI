@@ -1,10 +1,20 @@
-POST localhost:8080/api/tv
-Content-Type: application/json
+#POST localhost:8080/api/tv
+#Content-Type: application/json
+#
+#{
+#  "contentType": "MOVIE",
+#  "title": "Абоба",
+#  "releaseYear": 2018,
+#  "myRating": 9.1,
+#  "criticsRating": 8.7
+#}
 
-{
-  "contentType": "MOVIE",
-  "title": "Абоба",
-  "releaseYear": 2018,
-  "myRating": 9.1,
-  "criticsRating": 8.7
-}
+POST http://localhost:8080/api/tv/3/image
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="image"; filename="br.jpg"
+Content-Type: image/jpeg
+
+< E:\_Java\SpringStepik\MyWatchHistoryAPI\imgs\br.jpg
+--WebAppBoundary--
